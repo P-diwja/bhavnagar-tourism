@@ -2,8 +2,7 @@
   GoTrip Bhavnagar — SETUP INSTRUCTIONS (v3 — Full Build)
 ============================================================
 
-WHAT'S NEW IN THIS VERSION
-  ✅ home.php          — New entry point (User / Admin chooser)
+WHAT'S IN THIS 
   ✅ index.php         — Frontend (unchanged UI) + image upload in review form
   ✅ api/add_review.php — Image upload with MIME validation, 5 MB limit
   ✅ api/get_reviews.php — Returns image_path for display
@@ -18,7 +17,6 @@ WHAT'S NEW IN THIS VERSION
 FOLDER STRUCTURE (place inside htdocs/gotrip/)
 ------------------------------------------------------------
   gotrip/
-    home.php            ← NEW — entry point
     index.php           ← main frontend (renamed from final_version.html)
     db.php
     all-reviews.php
