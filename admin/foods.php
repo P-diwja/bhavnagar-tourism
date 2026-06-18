@@ -105,7 +105,7 @@ $foods=$conn->query("SELECT * FROM foods ORDER BY cat,name");
             <td><span style="color:<?=$f['food_type']==='Veg'?'#22c55e':'#ff6b35'?>"><?=$f['food_type']?></span></td>
             <td style="color:#fbbf24">★ <?=$f['rating']?></td>
             <td style="font-size:12px;color:var(--muted)"><?=htmlspecialchars($f['area'])?></td>
-            <td><?=$f['visible']?'<span class="badge-approved">👁️ Live</span>':'<span class="badge-hidden">🙈 Hidden</span>'?></td>
+            <td><?=$f['visible']?'<span class="badge-approved"> Live</span>':'<span class="badge-hidden">🙈 Hidden</span>'?></td>
             <td><div style="display:flex;gap:6px">
               <a href="?edit=<?=$f['id']?>" class="btn-edit">✏️</a>
               <form method="POST" style="display:inline" onsubmit="return confirm('Toggle?')">
