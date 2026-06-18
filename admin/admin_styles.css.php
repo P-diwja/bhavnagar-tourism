@@ -105,8 +105,18 @@ a{text-decoration:none;color:inherit}
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   .sidebar{width:60px;overflow:hidden}
-  .sidebar-logo-text,.sidebar-badge,.nav-link span,.nav-section,.user-name,.user-role,.btn-logout span{display:none}
+  .sidebar-logo-text,.sidebar-badge,.nav-link span:not(.nav-icon),.nav-section,.user-name,.user-role,.btn-logout span{display:none}
   .nav-link{justify-content:center;padding:12px}
   .main{margin-left:60px}
   .form-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .main{padding:18px 14px}
+  .top-bar{margin-bottom:18px}
+  .page-title{font-size:22px}
+  .stats-grid{grid-template-columns:repeat(2,1fr)!important;gap:10px}
+  .stat-card{padding:14px 12px}
+  .stat-icon{font-size:20px;margin-bottom:6px}
+  .stat-val{font-size:22px}
+  .section-card,.form-card{padding:16px}
 }
