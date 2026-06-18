@@ -1,6 +1,9 @@
 ============================================================
   GoTrip Bhavnagar — SETUP INSTRUCTIONS (v3 — Full Build)
 ============================================================
+## 🌐 Live Demo
+
+Check it out here: [GoTrip]( https://gotrip.great-site.net/ )
 
 WHAT'S IN THIS 
   ✅ index.php         — Frontend (unchanged UI) + image upload in review form
