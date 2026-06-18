@@ -124,7 +124,7 @@ $places=$conn->query("SELECT * FROM places ORDER BY id");
             <td><?= htmlspecialchars($p['cat']) ?></td>
             <td style="color:#fbbf24">★ <?= $p['rating'] ?></td>
             <td><?= htmlspecialchars($p['distance']) ?></td>
-            <td><?= $p['visible'] ? '<span class="badge-approved">👁️ Live</span>' : '<span class="badge-hidden">🙈 Hidden</span>' ?></td>
+            <td><?= $p['visible'] ? '<span class="badge-approved"> Live</span>' : '<span class="badge-hidden">🙈 Hidden</span>' ?></td>
             <td>
               <div style="display:flex;gap:6px">
                 <a href="?edit=<?= $p['id'] ?>" class="btn-edit">✏️ Edit</a>
