@@ -41,7 +41,7 @@ if ($ok):
   <p>Admin account is ready. Use these credentials to login:</p>
   <div class="cred">
     Username: <span>admin</span><br>
-    Password: <span>'YOUR_CHOSEN_PASSWORD'</span>
+    Password: <span><?= htmlspecialchars($new_password) ?></span>
   </div>
   <p><a href="admin/login.php">→ Go to Admin Login</a></p>
   <div class="warn">⚠️ <strong>DELETE this file (reset_admin.php) immediately after logging in!</strong></div>
