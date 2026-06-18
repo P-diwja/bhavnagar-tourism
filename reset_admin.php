@@ -27,20 +27,27 @@ hr{border:none;border-top:1px solid #333;margin:20px 0}
 <body>
 <div class="card">
 <?php
-$new_password = 'YOUR_CHOSEN_PASSWORD'';
-$hash = password_hash($new_password, PASSWORD_DEFAULT);
+// ─────────────────────────────────────────
+// ✏️  SET YOUR OWN USERNAME & PASSWORD HERE
+$new_username = 'YOUR_USERNAME';   // ← change this
+$new_password = 'YOUR_PASSWORD';   // ← change this
+// ─────────────────────────────────────────
 
-// Wipe and re-insert with fresh PHP-generated hash
-$conn->query("DELETE FROM admins WHERE username='admin'");
+$hash      = password_hash($new_password, PASSWORD_DEFAULT);
 $safe_hash = $conn->real_escape_string($hash);
-$ok = $conn->query("INSERT INTO admins (username, password) VALUES ('admin', '$safe_hash')");
+$safe_user = $conn->real_escape_string($new_username);
+
+// Wipe ALL admins to avoid leftover rows from previous usernames
+$conn->query("DELETE FROM admins");
+
+$ok = $conn->query("INSERT INTO admins (username, password) VALUES ('$safe_user', '$safe_hash')");
 
 if ($ok):
 ?>
-  <h2 class="success">✅ Admin Password Set!</h2>
+  <h2 class="success">✅ Admin Account Set!</h2>
   <p>Admin account is ready. Use these credentials to login:</p>
   <div class="cred">
-    Username: <span>admin</span><br>
+    Username: <span><?= htmlspecialchars($new_username) ?></span><br>
     Password: <span><?= htmlspecialchars($new_password) ?></span>
   </div>
   <p><a href="admin/login.php">→ Go to Admin Login</a></p>
@@ -51,8 +58,8 @@ if ($ok):
   <hr>
   <p class="info">Try running this SQL manually in phpMyAdmin:</p>
   <div class="cred" style="font-size:12px;word-break:break-all">
-    DELETE FROM admins WHERE username='admin';<br>
-    INSERT INTO admins (username, password) VALUES ('admin', '<?= htmlspecialchars($hash) ?>');
+    DELETE FROM admins;<br>
+    INSERT INTO admins (username, password) VALUES ('<?= htmlspecialchars($safe_user) ?>', '<?= htmlspecialchars($hash) ?>');
   </div>
 <?php endif;
 $conn->close();
