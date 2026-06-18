@@ -77,7 +77,7 @@ $recent_reviews= $conn->query("SELECT * FROM reviews ORDER BY created_at DESC LI
             <td><strong><?= htmlspecialchars($rv['name']) ?></strong></td>
             <td><?= str_repeat('★',$rv['rating']) ?><span style="opacity:.25"><?= str_repeat('★',5-$rv['rating']) ?></span></td>
             <td style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><?= htmlspecialchars(substr($rv['message'],0,80)) ?>…</td>
-            <td><?= $rv['approved'] ? '<span class="badge-approved">✅ Live</span>' : '<span class="badge-pending">⏳ Pending</span>' ?></td>
+            <td><?= $rv['approved'] ? '<span class="badge-approved"> Live</span>' : '<span class="badge-pending"> Pending</span>' ?></td>
             <td style="color:var(--muted);font-size:12px"><?= date('d M Y', strtotime($rv['created_at'])) ?></td>
           </tr>
           <?php endwhile; ?>
