@@ -1,8 +1,8 @@
 <?php
-$host     = 'localhost';
-$dbname   = 'gotrip_db';
-$username = 'root';
-$password = 'root';
+$host     = 'YOUR_HOST_NAME';
+$dbname   = 'YOUR_DB_NAME';
+$username = 'YOUR_DB_USERNAME';
+$password = 'YOUR_DB_PASSWORD';
 
 $conn = new mysqli($host, $username, $password, $dbname);
 
