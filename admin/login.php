@@ -15,19 +15,30 @@ if (!empty($_SESSION['admin_logged_in'])) {
 
 $error = '';
 
+require_once '../db.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $u = trim($_POST['username'] ?? '');
     $p = $_POST['password'] ?? '';
 
-    if ($u === 'admin' && $p === '1234') {
-        session_regenerate_id(true);
-        $_SESSION['admin_logged_in'] = true;
-        $_SESSION['admin_username']  = $u;
-        header('Location: dashboard.php');
-        exit;
-    } else {
-        $error = 'Invalid username or password';
+    $stmt = $conn->prepare("SELECT password FROM admins WHERE username = ?");
+    $stmt->bind_param("s", $u);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows === 1) {
+        $stmt->bind_result($hashed);
+        $stmt->fetch();
+        if (password_verify($p, $hashed)) {
+            session_regenerate_id(true);
+            $_SESSION['admin_logged_in'] = true;
+            $_SESSION['admin_username']  = $u;
+            header('Location: dashboard.php');
+            exit;
+        }
     }
+    $error = 'Invalid username or password';
+    $stmt->close();
 }
 ?>
 <!DOCTYPE html>
