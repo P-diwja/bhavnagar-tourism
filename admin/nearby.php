@@ -94,7 +94,7 @@ $nearby=$conn->query("SELECT * FROM nearby ORDER BY id");
             <td><?=htmlspecialchars($nb['cat'])?></td>
             <td><?=htmlspecialchars($nb['distance'])?></td>
             <td style="font-size:12px;color:var(--muted)"><?=htmlspecialchars($nb['best'])?></td>
-            <td><?=$nb['visible']?'<span class="badge-approved">👁️ Live</span>':'<span class="badge-hidden">🙈 Hidden</span>'?></td>
+            <td><?=$nb['visible']?'<span class="badge-approved"> Live</span>':'<span class="badge-hidden">🙈 Hidden</span>'?></td>
             <td><div style="display:flex;gap:6px">
               <a href="?edit=<?=$nb['id']?>" class="btn-edit">✏️</a>
               <form method="POST" style="display:inline" onsubmit="return confirm('Toggle?')">
