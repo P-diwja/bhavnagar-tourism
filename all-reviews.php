@@ -1,4 +1,4 @@
-<?php
+<?php 
 // all-reviews.php — Public page: all approved reviews with photos
 require_once 'db.php';
 
