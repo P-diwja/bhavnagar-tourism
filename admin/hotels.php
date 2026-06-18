@@ -95,7 +95,7 @@ $hotels=$conn->query("SELECT * FROM hotels ORDER BY FIELD(tier,'ultra','budget',
             <td style="font-size:12px"><?=htmlspecialchars($h['price'])?></td>
             <td style="color:#fbbf24">★ <?=$h['rating']?></td>
             <td style="font-size:12px;color:var(--muted)"><?=htmlspecialchars($h['area'])?></td>
-            <td><?=$h['visible']?'<span class="badge-approved">👁️ Live</span>':'<span class="badge-hidden">🙈 Hidden</span>'?></td>
+            <td><?=$h['visible']?'<span class="badge-approved"> Live</span>':'<span class="badge-hidden">🙈 Hidden</span>'?></td>
             <td><div style="display:flex;gap:6px">
               <a href="?edit=<?=$h['id']?>" class="btn-edit">✏️</a>
               <form method="POST" style="display:inline" onsubmit="return confirm('Toggle?')">
