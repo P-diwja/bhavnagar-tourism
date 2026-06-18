@@ -12,6 +12,7 @@ WHAT'S IN THIS
   ✅ uploads/           — Secure folder (PHP blocked via .htaccess)
   ✅ setup_full.sql     — Updated schema (image_path + approved=0 default)
   ✅ migrate_reviews.sql — For existing installs (just adds image_path column)
+  ✅ reset_admin.php  - for reset admin credential(delete after use)
 
 ------------------------------------------------------------
 FOLDER STRUCTURE (place inside htdocs/gotrip/)
