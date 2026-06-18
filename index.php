@@ -220,6 +220,20 @@
       flex-shrink: 0;
     }
 
+    .theme-select-mobile {
+      display: none;
+      flex-shrink: 0;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 3px 4px;
+      font-size: 13px;
+      line-height: 1;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
     /* ── ADMIN NAVBAR BUTTON ── */
     .btn-admin-nav {
       display: flex;
@@ -244,6 +258,53 @@
       border-color: var(--accent);
       color: var(--accent);
       background: rgba(0, 194, 255, 0.06);
+    }
+
+    /* ── NAVBAR: MOBILE ── */
+    @media (max-width: 640px) {
+      #navbar {
+        padding: 0 10px;
+      }
+
+      .nav-logo {
+        font-size: 16px;
+      }
+
+      .nav-logo span {
+        display: none;
+      }
+
+      .nav-tabs {
+        flex: 1;
+        min-width: 0;
+        scrollbar-width: thin;
+      }
+
+      .nav-tabs::-webkit-scrollbar {
+        height: 3px;
+      }
+
+      .nav-tab {
+        padding: 6px 9px;
+        font-size: 12px;
+      }
+
+      .theme-btns {
+        display: none;
+      }
+
+      .theme-select-mobile {
+        display: block;
+      }
+
+      .btn-admin-nav {
+        padding: 7px 9px;
+        margin-right: 2px;
+      }
+
+      .btn-admin-nav .admin-label {
+        display: none;
+      }
     }
 
     /* ── ADMIN LOGIN MODAL ── */
@@ -2554,7 +2615,7 @@
     .quick-title {
       font-size: 15px;
       font-weight: 900;
-      color: #fff;
+      color: var(--text);
       line-height: 1.3;
       margin-bottom: 6px;
     }
@@ -3115,8 +3176,9 @@
   <nav id="navbar">
     <div class="nav-logo" onclick="navigate('Home')">GoTrip <span>Bhavnagar</span></div>
     <div class="nav-tabs" id="navTabs"></div>
-    <a href="/gotrip/admin/login.php" class="btn-admin-nav" title="Admin Login">🔐 Admin</a>
+    <a href="admin/login.php" class="btn-admin-nav" title="Admin Login">🔐 <span class="admin-label">Admin</span></a>
     <div class="theme-btns" id="themeBtns"></div>
+    <select class="theme-select-mobile" id="themeSelectMobile" onchange="setTheme(this.value)" title="Theme" aria-label="Theme"></select>
   </nav>
 
   <!-- PAGES -->
@@ -5503,6 +5565,13 @@
       themeEl.innerHTML = Object.entries(THEMES).map(([k, th]) =>
         `<button class="theme-btn${k === currentTheme ? ' active' : ''}" onclick="setTheme('${k}')" title="${th.name}" style="background:${k === 'dark' ? '#050b14' : k === 'light' ? '#f0f4f8' : k === 'purple' ? '#1a0533' : '#001824'}">${th.icon}</button>`
       ).join('');
+
+      const themeSelectEl = document.getElementById('themeSelectMobile');
+      if (themeSelectEl) {
+        themeSelectEl.innerHTML = Object.entries(THEMES).map(([k, th]) =>
+          `<option value="${k}"${k === currentTheme ? ' selected' : ''} title="${th.name}">${th.icon}</option>`
+        ).join('');
+      }
     }
 
     function setTheme(k) {
@@ -5511,6 +5580,8 @@
       document.querySelectorAll('.theme-btn').forEach((b, i) => {
         b.classList.toggle('active', Object.keys(THEMES)[i] === k);
       });
+      const themeSelectEl = document.getElementById('themeSelectMobile');
+      if (themeSelectEl) themeSelectEl.value = k;
       // ── Persist choice in a 1-year cookie ──
       var d = new Date();
       d.setFullYear(d.getFullYear() + 1);
