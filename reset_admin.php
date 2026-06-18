@@ -27,7 +27,7 @@ hr{border:none;border-top:1px solid #333;margin:20px 0}
 <body>
 <div class="card">
 <?php
-$new_password = 'admin@567';
+$new_password = 'YOUR_CHOSEN_PASSWORD'';
 $hash = password_hash($new_password, PASSWORD_DEFAULT);
 
 // Wipe and re-insert with fresh PHP-generated hash
@@ -41,7 +41,7 @@ if ($ok):
   <p>Admin account is ready. Use these credentials to login:</p>
   <div class="cred">
     Username: <span>admin</span><br>
-    Password: <span>admin@567</span>
+    Password: <span>'YOUR_CHOSEN_PASSWORD'</span>
   </div>
   <p><a href="admin/login.php">→ Go to Admin Login</a></p>
   <div class="warn">⚠️ <strong>DELETE this file (reset_admin.php) immediately after logging in!</strong></div>
