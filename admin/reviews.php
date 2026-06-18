@@ -200,8 +200,8 @@ $hasImg  = $conn->query("SELECT COUNT(*) FROM reviews WHERE image_path IS NOT NU
   <!-- ── FILTERS ────────────────────────────────────────────────── -->
   <div class="filter-bar" style="margin-bottom:20px">
     <a href="?filter=all"      class="filter-chip <?= $filter === 'all'      ? 'active' : '' ?>">All (<?= $total ?>)</a>
-    <a href="?filter=pending"  class="filter-chip <?= $filter === 'pending'  ? 'active' : '' ?>">⏳ Pending (<?= $pend ?>)</a>
-    <a href="?filter=approved" class="filter-chip <?= $filter === 'approved' ? 'active' : '' ?>">✅ Live (<?= $live ?>)</a>
+    <a href="?filter=pending"  class="filter-chip <?= $filter === 'pending'  ? 'active' : '' ?>"> Pending (<?= $pend ?>)</a>
+    <a href="?filter=approved" class="filter-chip <?= $filter === 'approved' ? 'active' : '' ?>"> Live (<?= $live ?>)</a>
   </div>
 
   <!-- ── TABLE ──────────────────────────────────────────────────── -->
@@ -278,9 +278,9 @@ $hasImg  = $conn->query("SELECT COUNT(*) FROM reviews WHERE image_path IS NOT NU
             <!-- Status badge -->
             <td>
               <?php if ($rv['approved']): ?>
-                <span class="badge-approved">✅ Live</span>
+                <span class="badge-approved"> Live</span>
               <?php else: ?>
-                <span class="badge-pending">⏳ Pending</span>
+                <span class="badge-pending"> Pending</span>
               <?php endif; ?>
             </td>
 
