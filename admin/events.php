@@ -89,7 +89,7 @@ $events=$conn->query("SELECT * FROM events ORDER BY seasonal DESC,id");
             <td style="font-size:12px;color:var(--muted)"><?=htmlspecialchars($ev['event_date'])?></td>
             <td><?=htmlspecialchars($ev['event_type'])?></td>
             <td><?=$ev['seasonal']?'🗓️ Seasonal':'🔄 Recurring'?></td>
-            <td><?=$ev['visible']?'<span class="badge-approved">👁️ Live</span>':'<span class="badge-hidden">🙈 Hidden</span>'?></td>
+            <td><?=$ev['visible']?'<span class="badge-approved"> Live</span>':'<span class="badge-hidden">🙈 Hidden</span>'?></td>
             <td><div style="display:flex;gap:6px">
               <a href="?edit=<?=$ev['id']?>" class="btn-edit">✏️ Edit</a>
               <form method="POST" style="display:inline" onsubmit="return confirm('Toggle?')">
